@@ -63,7 +63,7 @@ namespace Console_Net
                 server.Stop();
             }
 
-            Console.WriteLine("서버를 종료합니다.")
+            Console.WriteLine("서버를 종료합니다.");
         }
     }
 }
