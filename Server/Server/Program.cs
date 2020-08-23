@@ -17,6 +17,8 @@ namespace Console_Net
                 return;
             }
 
+            string data = null;
+
             string bindIp = args[0];
             const int bindPort = 5425;
             TcpListener server = null;
@@ -37,7 +39,6 @@ namespace Console_Net
                     NetworkStream stream = client.GetStream();
 
                     int length;
-                    string data = null;
                     byte[] bytes = new byte[256];
 
                     while ((length = stream.Read(bytes, 0, bytes.Length)) != 0)
@@ -48,6 +49,8 @@ namespace Console_Net
                         byte[] msg = Encoding.Default.GetBytes(data);
                         stream.Write(msg, 0, msg.Length);
                         Console.WriteLine(String.Format("송신: {0}", data));
+
+                        
                     }
 
                     stream.Close();
@@ -60,8 +63,10 @@ namespace Console_Net
             }
             finally
             {
+
                 server.Stop();
             }
+
 
             Console.WriteLine("서버를 종료합니다.");
         }
