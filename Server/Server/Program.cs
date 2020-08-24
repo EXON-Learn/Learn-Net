@@ -46,9 +46,18 @@ namespace Console_Net
                         data = Encoding.Default.GetString(bytes, 0, length);
                         Console.WriteLine(String.Format("수신: {0}", data));
 
-                        byte[] msg = Encoding.Default.GetBytes(data);
+                        string allData = data;
+                        if (data == "장승윤")
+                        {
+                            allData += "은 바보입니다.";
+                        }
+                        else if (data == "박시혁")
+                        {
+                            allData += "은 천재입니다.";
+                        }
+                        byte[] msg = Encoding.Default.GetBytes(allData);
                         stream.Write(msg, 0, msg.Length);
-                        Console.WriteLine(String.Format("송신: {0}", data));
+                        Console.WriteLine(String.Format("송신: {0}", allData));
 
                         
                     }
